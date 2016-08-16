@@ -1,5 +1,5 @@
 'use babel'
-/* eslint-env jasmine */
+/* eslint-env jasmine, es6 */
 
 describe('debug', () => {
   let mainModule = null

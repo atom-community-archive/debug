@@ -18,18 +18,25 @@
   "bugs": {
     "url": "https://github.com/atom-community/debug/issues"
   },
+  "dependencies": {
+    "react-for-atom": "^15.2.1-0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "babel-eslint": "^6.0.0-beta.6",
-    "eslint-config-standard": "^5.1.0",
-    "eslint-plugin-standard": "^1.3.2",
-    "eslint-plugin-promise": "^1.1.0"
+    "standard": "^8.0.0-beta.4"
   },
   "configSchema": {},
+  "providedServices": {
+    "debug": {
+      "versions": {
+        "0.0.1": "provide"
+      }
+    }
+  },
   "standard": {
     "globals": [
-      "atom",
-      "waitsForPromise"
+      "atom"
     ]
   }
 }
