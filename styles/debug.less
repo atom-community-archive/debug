@@ -1,0 +1,217 @@
+@import "ui-variables";
+
+@debug-debug-line-color-bg: rgba(64, 115, 255, 0.5);
+@debug-breakpoint-size: 0.8em;
+@debug-panel-size: 20em;
+@debug-output-size: 20em;
+
+button.debug-btn-flat {
+	border: none;
+	border-radius: 0;
+	background: none;
+}
+
+.debug-breakpoint {
+	display: inline-block;
+	height: @debug-breakpoint-size !important;
+	width: @debug-breakpoint-size;
+	border-radius: 50%;
+	border: 1px solid currentColor;
+	color: red;
+	&-state-busy {
+	}
+	&-state-valid {
+		background-color: currentColor;
+	}
+	&-state-invalid {
+		border-color: orange;
+		background-color: orange;
+	}
+}
+
+atom-text-editor::shadow {
+	.debug-gutter-breakpoint {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+	}
+	.debug-breakpoint {
+		.debug-breakpoint;
+	}
+
+	.debug-debug-line {
+		background: @debug-debug-line-color-bg;
+	}
+}
+
+.debug-panel {
+	display: flex;
+	border-left: 1px solid @tool-panel-border-color;
+}
+
+.debug-panel-root {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: @debug-panel-size;
+	position: relative;
+}
+
+.debug-panel-resizer {
+	position: absolute;
+	top: 0; left: 0; bottom: 0;
+	width: 5px;
+	cursor: ew-resize;
+}
+
+.debug-panel-header {
+	border-bottom: 1px solid @pane-item-border-color;
+	> div {
+		display: flex;
+		height: 2.5em;
+		align-items: center;
+		> * {
+			height: 100%;
+		}
+	}
+
+	select {
+		background: @tool-panel-background-color;
+		flex: 1;
+		border: 0;
+		padding-left: 0.5em;
+		cursor: pointer;
+	}
+}
+
+.debug-panel-no-debugger {
+	padding-left: 0.5em;
+}
+
+.debug-panel-commands {
+	display: flex;
+	flex-shrink: 0;
+	white-space: nowrap;
+
+	> .btn {
+		flex: 1;
+	}
+}
+
+.debug-panel-content {
+	overflow: auto;
+	flex: 1;
+}
+
+.debug-panel-showoutput {
+	flex-shrink: 0;
+	min-height: 3em;
+	text-align: center;
+}
+
+.debug-panel-stacktrace,
+.debug-panel-threads {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	& > * {
+		padding: 0.2em 0.5em;
+		cursor: pointer;
+		&:nth-child(odd) {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
+.debug-panel-variables {
+	li {
+		padding: 0.1em 0;
+	}
+	ol {
+		overflow: visible;
+		margin: 0;
+		padding: 0 0.5em;
+		white-space: pre-line;
+		list-style: none;
+		ol {
+			padding-left: 1.5em;
+		}
+	}
+}
+
+.debug-panel-breakpoints {
+	> * {
+		padding: 0.2em 0.5em 0;
+		cursor: pointer;
+		white-space: nowrap;
+		display: flex;
+		align-items: baseline;
+		> .icon-x::before {
+			height: auto;
+			width: auto;
+			margin-right: 0.3em;
+			flex-shrink: 0;
+			font-size: small;
+		}
+	}
+	.debug-breakpoint {
+		margin-right: 0.2em;
+		flex-shrink: 0;
+	}
+}
+
+.debug-output-header {
+	display: flex;
+	padding-left: 0.5em;
+	align-items: center;
+	.text {
+		flex: 1;
+		margin: 0;
+	}
+	.btn {
+		min-width: 3em;
+		min-height: 3em;
+	}
+}
+
+.debug-output-list {
+	max-height: @debug-output-size;
+	overflow: auto;
+	white-space: pre-line;
+	padding: 0.2em 0.5em;
+}
+
+.debug-expandable {
+	margin-bottom: 0.5em;
+}
+.debug-expandable-header {
+	cursor: pointer;
+	border-bottom: 1px solid currentColor;
+	padding: 0.2em 0.5em;
+	font-weight: bold;
+}
+.debug-expandable-body {
+	overflow-x: auto;
+}
+.debug-expandable[data-expanded="false"] .debug-expandable-body{
+	display: none;
+}
+
+.debug-toggle {
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	width: 1em;
+
+	&::before {
+		width: auto;
+		height: auto;
+		font-size: inherit;
+	}
+	&.debug-toggle-hidden {
+		visibility: hidden;
+	}
+}

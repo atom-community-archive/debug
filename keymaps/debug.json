@@ -1,0 +1,18 @@
+{
+	"atom-workspace": {
+		"f5":            "debug:start",
+		"shift-f5":      "debug:restart",
+		"f6":            "debug:stop",
+		"f8":            "debug:continue",
+		"f9":            "debug:toggle-breakpoint",
+		"f10":           "debug:next",
+		"f11":           "debug:stepIn",
+		"shift-f11":     "debug:stepOut"
+	},
+	"body.platform-win32 atom-workspace, body.platform-linux atom-workspace": {
+		"ctrl-k ctrl-g": "debug:toggle-panel"
+	},
+	"body.platform-darwin atom-workspace": {
+		"cmd-k cmd-g": "debug:toggle-panel"
+	}
+}
